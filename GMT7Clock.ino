@@ -1,4 +1,3 @@
-// Example sketch for testing OLED display
 // We need to include Wire.h for I2C communication
 #include <Wire.h>
 #include "OLED.h"
@@ -6,8 +5,8 @@
 #include <NTPClient.h>
 #include <WiFiUdp.h>
 
-const char *ssid     = "KRIXIHOME Floor3";
-const char *password = "88888888";
+const char *ssid     = "your_network";
+const char *password = "your_password";
 
 // Define NTP Client to get time
 WiFiUDP ntpUDP;
@@ -52,29 +51,8 @@ void setup()
   }
 
   wifi_connect = true;
-
-  // // Test long message
-  // display.print("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
-  // delay(3*1000);
-
-  // Display clear
   display.clear();
   delay(1000);
-
-  // // Test message postioning
-  // display.print("TOP-LEFT");
-  // display.print("4th row", 4);
-  // display.print("RIGHT-BOTTOM", 7, 4);
-  // delay(3*1000);
-
-  // // Test display OFF
-  // display.off();
-  // display.print("3rd row", 3, 8);
-  // delay(3*1000);
-
-  // // Test display ON
-  // display.on();
-  // delay(3*1000);
 
   // Initialize a NTPClient to get time
   timeClient.begin();
@@ -86,7 +64,6 @@ void setup()
   // GMT 0 = 0
   timeClient.setTimeOffset(25200);
   print_time_to_serial();
-
 }
 
 void demo_info_print()
