@@ -34,7 +34,7 @@ void setup()
 
   // Initialize display
   display.begin();
-  display.print("The Internet:");
+  display.print("The internet is");
   display.print("connecting ...", 3);
 
   WiFi.begin(ssid, password);
@@ -43,6 +43,7 @@ void setup()
     if (retryTimes > 10)
     {
       demo_info_print();
+      delay(5000);
       return;
     }
     Serial.print("Waitting connect to the internet ... \n");
@@ -52,7 +53,6 @@ void setup()
 
   wifi_connect = true;
   display.clear();
-  delay(1000);
 
   // Initialize a NTPClient to get time
   timeClient.begin();
@@ -69,7 +69,6 @@ void setup()
 void demo_info_print()
 {
   display.clear();
-  delay(1000);
   display.print("Esp8266 ssd1306");
   display.print("This is demo app", 2);
   display.print("Need to update", 4);
@@ -158,6 +157,13 @@ void loop()
     display.print(ch_date, 4);
     display.print("Day:", 6);
     display.print(ch_weekDay, 6, 5);
+  }
+  else
+  {
+    display.clear();
+    display.print("No internet ...");
+    display.print("Please reboot!", 2);
+    delay(7000);
   }
 
   delay(1000);
